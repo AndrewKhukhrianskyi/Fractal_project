@@ -50,3 +50,4 @@ class KochClass:
             self.draw_koch_segment(t, self.length)
                 
         turtle.done()
+KochClass([40, 40, 110, 35, 25]).draw()
