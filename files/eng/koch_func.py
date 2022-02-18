@@ -4,13 +4,12 @@ import turtle
 # Класс работы со снежинкой Коха
 class KochClass:
     # Передаем параметры длины и углов для отрисовки
-    def __init__(self, length, l_angle, r_angle,
-                 draw_angle, counter):
-        self.length = length
-        self.l_angle = l_angle
-        self.r_angle = r_angle
-        self.draw_angle = draw_angle
-        self.counter = counter
+    def __init__(self, datas):
+        self.length = datas[0]
+        self.l_angle = datas[1]
+        self.r_angle = datas[2]
+        self.draw_angle = datas[3]
+        self.counter = datas[4]
         
     def draw_koch_segment(self, t, line):
         """ Условие залома линии. Если длина больше 6,
@@ -51,5 +50,3 @@ class KochClass:
             self.draw_koch_segment(t, self.length)
                 
         turtle.done()
-
-KochClass(10, 30, 180, 113, 5).draw()
