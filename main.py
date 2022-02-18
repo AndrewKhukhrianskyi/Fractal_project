@@ -1,8 +1,8 @@
 from tkinter import *
 
-from ui_config import *
-#from koch_screen import KochScreen
-#command = KochScreen().koch_window())
+from files.config.ui_config import *
+from files.koch_screen import KochScreen
+
 
 class MainScreen:
     def __init__(self):
@@ -20,7 +20,8 @@ class MainScreen:
                              width = BUTTON_WIDTH,
                              height = BUTTON_HEIGHT,
                              bg = COLOR,
-                             fg = TEXT)                
+                             fg = TEXT,
+                             command = KochScreen().koch_window())                
         
         l_curve_button = Button(text = L_TEXT,
                                 width = BUTTON_WIDTH,

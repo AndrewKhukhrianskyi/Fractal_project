@@ -3,6 +3,7 @@ from tkinter import messagebox as mb
 
 from eng.koch_func import KochClass
 from eng.rnd import random_koch_func
+from eng.converter import number_converter
 
 from config.ui_config import *
 
@@ -13,7 +14,7 @@ class KochScreen:
     
 
     def koch_window(self):
-        sub_root = Tk()
+        sub_root = Toplevel()
         sub_root.title(KOCH_TITLE)
         sub_root.geometry(f"{self.width}x{self.height}")
         sub_root.resizable(False, False)
@@ -23,7 +24,7 @@ class KochScreen:
             ans = mb.askyesno(title = "Вопрос",
                               message = "Вы уверены, что хотите случайно выбрать данные?")
             if ans == True:
-                add_parameters(length_field, l_angle_field,
+                add_rnd_parameters(length_field, l_angle_field,
                                r_angle_field, draw_angle_field,
                                counter_field)
                 mb.showinfo("Окошко", "Данные сгенерированы.")
@@ -37,10 +38,17 @@ class KochScreen:
                                counter_field)
                 mb.showinfo("Окошко", "Данные стерты.")
         
-        def add_parameters(*text_list):
+        def add_rnd_parameters(*text_list):
             data = random_koch_func()
             for wdg in range(len(text_list)):
                 text_list[wdg].insert(0.0, data[wdg])
+        
+        def get_parameters(*text_list):
+            arr = []
+            for wdg in range(len(text_list)):
+                arr.append(text_list[wdg].get(0.0, END))
+            
+            number_converter(arr)
 
         def clear_parameters(*text_list):
             for wdg in text_list:
@@ -101,7 +109,11 @@ class KochScreen:
                              height = KOCH_BUTTON_HEIGHT,
                              bg = COLOR,
                              fg = TEXT,
-                             text = "Нарисовать")
+                             text = "Нарисовать",
+                             command = KochClass(get_parameters(
+                                length_field, l_angle_field,
+                                r_angle_field, draw_angle_field,
+                                counter_field))).draw()
 
         empty_label = Label(width = LABEL_WIDTH,
                             height = LABEL_HEIGHT,
@@ -142,8 +154,3 @@ class KochScreen:
         random_button.pack()
         clear_button.pack()
         draw_button.pack()
-        
-        
-        sub_root.mainloop()
-
-KochScreen().koch_window()
