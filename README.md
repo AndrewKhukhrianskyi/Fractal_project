@@ -30,5 +30,19 @@ python main.py
 In current part we should understand how project works.
 ### Koch system
 Koch system is a fractal system which is based on building fractal objects which is looks like as a snowflake :)
-Example
-![KOCH EXAMPLE] (https://github.com/AndrewKhukhrianskyi/Fractal_projectreadme_screenshots/koch_fractal_example.png "Snoflake by using Koch system")
+#### Example
+![koch_fractal_example](https://user-images.githubusercontent.com/55056139/154777775-33156f51-a0fb-48c1-a19e-5856932453ee.png)
+Snowflake drawing requires the next parameters:
+1. Line length;
+2. Left & Right angles (requires for the line curvature);
+3. Draw angle;
+4. Line counter (how many times we should draw the line?).
+
+### Koch UI
+![koch_menu](https://user-images.githubusercontent.com/55056139/154777951-828beb45-116d-4dcf-b063-4f053ab3d6e7.png)
+#### Instruction
+The current menu has five text fields and three buttons. All text fields are chronologically placed according to the list above.
+1. "Рандом" button is used to randomize all parameters and add them to the text fields;
+2. "Очистить" button is used to clear all data from all text fields;
+3. "Нарисовать" button is used to draw the snowflake
+
