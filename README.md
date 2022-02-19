@@ -28,10 +28,14 @@ python main.py
 
 ## Manual guideline
 In current part we should understand how project works.
+
 ### Koch system
 Koch system is a fractal system which is based on building fractal objects which is looks like as a snowflake :)
+
 #### Example
 ![koch_fractal_example](https://user-images.githubusercontent.com/55056139/154777775-33156f51-a0fb-48c1-a19e-5856932453ee.png)
+
+#### Parameter list
 Snowflake drawing requires the next parameters:
 1. Line length;
 2. Left & Right angles (requires for the line curvature);
