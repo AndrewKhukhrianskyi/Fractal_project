@@ -1,11 +1,12 @@
+from turtle import clear
 from tkinter import *
 from tkinter import messagebox as mb
 
-from eng.koch_func import KochClass
-from eng.rnd import random_koch_func
-from eng.converter import number_converter
+from files.eng.koch_func import KochClass
+from files.eng.rnd import random_koch_func
+from files.eng.converter import number_converter
 
-from config.ui_config import *
+from files.config.ui_config import *
 
 class KochScreen:
     def __init__(self):
@@ -14,11 +15,11 @@ class KochScreen:
     
 
     def koch_window(self):
-        sub_root = Toplevel()
+        sub_root = Toplevel(width = self.width,
+                            height = self.height,
+                            bg = COLOR)
         sub_root.title(KOCH_TITLE)
-        sub_root.geometry(f"{self.width}x{self.height}")
         sub_root.resizable(False, False)
-        sub_root.config(bg = COLOR)
         
         def rnd_messagebox():
             ans = mb.askyesno(title = "Вопрос",
@@ -43,96 +44,119 @@ class KochScreen:
             for wdg in range(len(text_list)):
                 text_list[wdg].insert(0.0, data[wdg])
         
-        def get_parameters(*text_list):
+        def get_parameters():
+            text_list = [length_field, l_angle_field, r_angle_field,
+                        draw_angle_field, counter_field]
             arr = []
             for wdg in range(len(text_list)):
                 arr.append(text_list[wdg].get(0.0, END))
-            
-            number_converter(arr)
+            KochClass(number_converter(arr)).draw()
+
+       
+
 
         def clear_parameters(*text_list):
             for wdg in text_list:
                 wdg.delete(0.0, END)
 
-        length_label = Label(width = LABEL_WIDTH,
+        length_label = Label(sub_root,
+                             width = LABEL_WIDTH,
                              height = LABEL_HEIGHT,
                              text = 'Длина линии',
                              bg = COLOR,
                              fg = TEXT)
-        length_field = Text(width = FIELD_WIDTH,
+        length_field = Text(sub_root, 
+                            width = FIELD_WIDTH,
                             height = FIELD_HEIGHT,
                             bg = COLOR,
                             fg = TEXT)
 
-        l_angle_label = Label(width = LABEL_WIDTH,
+        l_angle_label = Label(sub_root,
+                             width = LABEL_WIDTH,
                              height = LABEL_HEIGHT,
                              text = 'Левый угол',
                              bg = COLOR,
                              fg = TEXT)
 
-        l_angle_field = Text(width = FIELD_WIDTH,
+        l_angle_field = Text(sub_root,
+                            width = FIELD_WIDTH,
                             height = FIELD_HEIGHT,
                             bg = COLOR,
                             fg = TEXT)
 
-        r_angle_label = Label(width = LABEL_WIDTH,
+        r_angle_label = Label(sub_root,
+                            width = LABEL_WIDTH,
                              height = LABEL_HEIGHT,
                              text = 'Правый угол',
                              bg = COLOR,
                              fg = TEXT)
-        r_angle_field = Text(width = FIELD_WIDTH,
+        r_angle_field = Text(sub_root,
+                            width = FIELD_WIDTH,
                             height = FIELD_HEIGHT,
                             bg = COLOR,
                             fg = TEXT)
 
-        draw_angle_label = Label(width = LABEL_WIDTH,
+        draw_angle_label = Label(sub_root,
+                             width = LABEL_WIDTH,
                              height = LABEL_HEIGHT,
                              text = 'Угол отрисовки',
                              bg = COLOR,
                              fg = TEXT)
-        draw_angle_field = Text(width = FIELD_WIDTH,
+        draw_angle_field = Text(sub_root,
+                            width = FIELD_WIDTH,
                             height = FIELD_HEIGHT,
                             bg = COLOR,
                             fg = TEXT)
 
-        counter_label = Label(width = LABEL_WIDTH,
+        counter_label = Label(sub_root,
+                             width = LABEL_WIDTH,
                              height = LABEL_HEIGHT,
                              text = 'Кол-во циклов отрисовки',
                              bg = COLOR,
                              fg = TEXT)
-        counter_field = Text(width = FIELD_WIDTH,
+        counter_field = Text(sub_root,
+                            width = FIELD_WIDTH,
                             height = FIELD_HEIGHT,
                             bg = COLOR,
                             fg = TEXT)
         
-        draw_button = Button(width = KOCH_BUTTON_WIDTH,
+        draw_button = Button(sub_root,
+                             width = KOCH_BUTTON_WIDTH,
                              height = KOCH_BUTTON_HEIGHT,
                              bg = COLOR,
                              fg = TEXT,
                              text = "Нарисовать",
-                             command = KochClass(get_parameters(
-                                length_field, l_angle_field,
-                                r_angle_field, draw_angle_field,
-                                counter_field))).draw()
+                             command = get_parameters)
 
-        empty_label = Label(width = LABEL_WIDTH,
+        empty_label = Label(sub_root,
+                            width = LABEL_WIDTH,
                             height = LABEL_HEIGHT,
                             bg = COLOR)
         
-        random_button = Button(width = KOCH_BUTTON_WIDTH,
+        random_button = Button(sub_root,
+                             width = KOCH_BUTTON_WIDTH,
                              height = KOCH_BUTTON_HEIGHT,
                              bg = COLOR,
                              fg = TEXT,
                              text = "Рандом",
                              command = rnd_messagebox)
 
-        clear_button = Button(width = KOCH_BUTTON_WIDTH,
+        clear_button = Button(sub_root,
+                             width = KOCH_BUTTON_WIDTH,
                              height = KOCH_BUTTON_HEIGHT,
                              bg = COLOR,
                              fg = TEXT,
                              text = "Очистить",
                              command = clear_messagebox)
-
+        
+        clear_scr_button = Button(sub_root,
+                             width = KOCH_BUTTON_WIDTH,
+                             height = KOCH_BUTTON_HEIGHT,
+                             bg = COLOR,
+                             fg = TEXT,
+                             text = "Оч. холст"
+                             )
+        
         
 
         length_label.pack()
@@ -153,4 +177,7 @@ class KochScreen:
         empty_label.pack()
         random_button.pack()
         clear_button.pack()
+        clear_scr_button.pack()
         draw_button.pack()
+
+        
