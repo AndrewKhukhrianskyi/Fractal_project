@@ -1,15 +1,16 @@
-# Этот файл содержит все элементы, необходимые для UI
-
 
 # Параметры экрана
 WIDTH = 200
 HEIGHT = 200
-TITLE = 'Fractal Project'
+TITLE = 'Фрактальная геометрия'
 COLOR = 'black'
 TEXT = 'green'
-# Параметры для кнопок
+
+# Тексты экранов
 KOCH_TEXT = 'Снежинка Коха'
 L_TEXT = "L-Системы"
+
+# Параметры для кнопок
 BUTTON_WIDTH = 40
 BUTTON_HEIGHT = 2
 
@@ -22,7 +23,7 @@ FIELD_WIDTH = 20
 FIELD_HEIGHT = 1
 
 # Окно снежинки Коха
-KOCH_WIDTH = 200
+KOCH_WIDTH = 100
 KOCH_HEIGHT = 320
 KOCH_TITLE = 'Снежинка Коха'
 

@@ -1,6 +1,7 @@
 # Добавление библиотек для отрисовки
 import turtle
 
+from files.config.eng_config import *
 # Класс работы со снежинкой Коха
 class KochClass:
     # Передаем параметры длины и углов для отрисовки
@@ -10,7 +11,7 @@ class KochClass:
         self.r_angle = datas[2]
         self.draw_angle = datas[3]
         self.counter = datas[4]
-        
+       
     def draw_koch_segment(self, t, line):
         """ Условие залома линии. Если длина больше 6,
             то мы заламываем линию разделив ее на 3 и выполняем рекурсию
@@ -37,13 +38,10 @@ class KochClass:
     def draw(self):
         t = turtle.Turtle()
         t.ht()
-        t.speed(100)
-        
-        width = 1200
-        height = 600
-        
+        t.speed(TURTLE_SPEED)
+      
         screen = turtle.Screen()
-        screen.setup(width, height, 0, 0)
+        screen.setup(TURTLE_WIDTH, TURTLE_HEIGHT, TURTLE_RESIZE_X, TURTLE_RESIZE_Y)
         
         for elem in range(self.counter):
             t.left(self.draw_angle)

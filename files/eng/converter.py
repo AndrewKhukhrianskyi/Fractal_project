@@ -3,6 +3,9 @@
 полученные данные в целые числа
 """
 def number_converter(arr):
-    return list(map(int, arr))
+    try:
+        return list(map(int, arr))
+    except:
+        return None
 
 
