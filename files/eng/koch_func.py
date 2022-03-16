@@ -36,15 +36,19 @@ class KochClass:
 
     # Работа с Turtle. Создание окон, назначение переменных и тд.
     def draw(self):
-        t = turtle.Turtle()
-        t.ht()
-        t.speed(TURTLE_SPEED)
-      
-        screen = turtle.Screen()
-        screen.setup(TURTLE_WIDTH, TURTLE_HEIGHT, TURTLE_RESIZE_X, TURTLE_RESIZE_Y)
+        try: # Бага - при закрытии окна повторно не рисует
+            t = turtle.Turtle()
+            turtle.TurtleScreen._RUNNING = True
+            t.ht()
+            t.speed(TURTLE_SPEED)
         
-        for elem in range(self.counter):
-            t.left(self.draw_angle)
-            self.draw_koch_segment(t, self.length)
-                
-        turtle.done()
+            screen = turtle.Screen()
+            screen.setup(TURTLE_WIDTH, TURTLE_HEIGHT, TURTLE_RESIZE_X, TURTLE_RESIZE_Y)
+            
+            for elem in range(self.counter):
+                t.left(self.draw_angle)
+                self.draw_koch_segment(t, self.length)
+        
+            turtle.done()
+        except:
+            pass

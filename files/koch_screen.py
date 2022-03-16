@@ -1,4 +1,3 @@
-from turtle import clear
 from tkinter import *
 from tkinter import messagebox as mb
 
@@ -12,7 +11,6 @@ class KochScreen:
     def __init__(self):
         self.width = KOCH_WIDTH
         self.height = KOCH_HEIGHT
-    
 
     def koch_window(self):
         sub_root = Toplevel(width = self.width,
@@ -48,12 +46,20 @@ class KochScreen:
             text_list = [length_field, l_angle_field, r_angle_field,
                         draw_angle_field, counter_field]
             arr = []
+
             for wdg in range(len(text_list)):
+                if len(text_list[wdg].get(0.0, END)) > 4:
+                    mb.showerror('Ошибка', "Какой-то из параметров принял большое значение! Я не буду рисовать!")
+                    return 0
+                
+                if int(text_list[-1].get(0.0, END)) > 30:
+                    mb.showerror('Ошибка', "Большой параметр цикла отрисовки. Измените его!")
+                    return 0
+                
                 arr.append(text_list[wdg].get(0.0, END))
-            KochClass(number_converter(arr)).draw()
-
-       
-
+            
+            draw_init = KochClass(number_converter(arr))
+            draw_init.draw()
 
         def clear_parameters(*text_list):
             for wdg in text_list:
@@ -141,21 +147,13 @@ class KochScreen:
                              text = "Рандом",
                              command = rnd_messagebox)
 
-        clear_button = Button(sub_root,
+        clear_data_button = Button(sub_root,
                              width = KOCH_BUTTON_WIDTH,
                              height = KOCH_BUTTON_HEIGHT,
                              bg = COLOR,
                              fg = TEXT,
                              text = "Очистить",
                              command = clear_messagebox)
-        
-        clear_scr_button = Button(sub_root,
-                             width = KOCH_BUTTON_WIDTH,
-                             height = KOCH_BUTTON_HEIGHT,
-                             bg = COLOR,
-                             fg = TEXT,
-                             text = "Оч. холст"
-                             )
         
         
 
@@ -176,8 +174,7 @@ class KochScreen:
 
         empty_label.pack()
         random_button.pack()
-        clear_button.pack()
-        clear_scr_button.pack()
+        clear_data_button.pack()
         draw_button.pack()
 
         
