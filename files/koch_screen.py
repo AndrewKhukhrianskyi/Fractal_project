@@ -155,26 +155,14 @@ class KochScreen:
                              text = "Очистить",
                              command = clear_messagebox)
         
-        
+        wdg_list = [length_label, length_field,
+                   l_angle_label, l_angle_field,
+                   r_angle_label, r_angle_field,
+                   draw_angle_label, draw_angle_field,
+                   counter_label, counter_field,
+                   empty_label, random_button,
+                   clear_data_button, draw_button]
 
-        length_label.pack()
-        length_field.pack()
-        
-        l_angle_label.pack()
-        l_angle_field.pack()
-        
-        r_angle_label.pack()
-        r_angle_field.pack()
-
-        draw_angle_label.pack()
-        draw_angle_field.pack()
-
-        counter_label.pack()
-        counter_field.pack()
-
-        empty_label.pack()
-        random_button.pack()
-        clear_data_button.pack()
-        draw_button.pack()
-
+        for wdg in wdg_list:
+            wdg.pack()
         
