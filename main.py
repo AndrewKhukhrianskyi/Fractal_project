@@ -3,6 +3,7 @@ from tkinter import *
 from files.config.ui_config import *
 from files.eng.koch_func import KochClass
 from files.koch_screen import KochScreen
+from files.l_curve_screen import LCurveScreen
 
 
 class MainScreen:
@@ -28,7 +29,8 @@ class MainScreen:
                                 width = BUTTON_WIDTH,
                                 height = BUTTON_HEIGHT,
                                 bg = COLOR,
-                                fg = TEXT)
+                                fg = TEXT,
+                                command = LCurveScreen().l_window)
         
         empty_label = Label(width = LABEL_WIDTH,
                             bg = COLOR)
