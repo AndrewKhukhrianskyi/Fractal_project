@@ -37,6 +37,10 @@ class KochScreen:
                                counter_field)
                 mb.showinfo("Окошко", "Данные стерты.")
         
+        def clear_parameters(*text_list):
+            for wdg in text_list:
+                wdg.delete(0.0, END)
+                
         def add_rnd_parameters(*text_list):
             data = random_koch_func()
             for wdg in range(len(text_list)):
@@ -60,10 +64,6 @@ class KochScreen:
             
             draw_init = KochClass(number_converter(arr))
             draw_init.draw()
-
-        def clear_parameters(*text_list):
-            for wdg in text_list:
-                wdg.delete(0.0, END)
 
         length_label = Label(sub_root,
                              width = LABEL_WIDTH,

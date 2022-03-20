@@ -31,3 +31,7 @@ KOCH_TITLE = 'Снежинка Коха'
 KOCH_BUTTON_WIDTH = 10
 KOCH_BUTTON_HEIGHT = 1
 
+# Параметры для L-системы
+L_CURVE_HEIGHT = 400
+L_CURVE_WIDTH = 400
+L_TITLE = 'L-системы'

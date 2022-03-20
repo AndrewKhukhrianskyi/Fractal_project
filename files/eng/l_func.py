@@ -3,15 +3,6 @@ import re
 
 from random import randint, choice
 
-def randomize_rule():
-    rnd_path = ''
-    rnd_list = ['F', 'S', '+', '-', '[', ']']
-    for rule in range(randint(5,20)):
-        rnd_path += choice(rnd_list)
-
-    return rnd_path
-
-
 def cmd_turtle_fd(t, length, *args):
     t.pensize(args[1])
     t.fd(length*args[0])
