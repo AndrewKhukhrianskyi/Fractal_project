@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import messagebox as mb
 
+<<<<<<< HEAD
+from
+=======
 from files.config.ui_config import *
 from files.eng.rnd import random_l_func
 
@@ -124,3 +127,4 @@ class LCurveScreen:
         for wdg in wdg_arr:
             wdg.pack()
 
+>>>>>>> 7038cb966e40850f8fb83bd7f1c7ef3bf9c88f90
