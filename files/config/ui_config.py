@@ -1,4 +1,4 @@
-
+'''Общие данные'''
 # Параметры экрана
 WIDTH = 200
 HEIGHT = 200
@@ -22,6 +22,7 @@ LABEL_HEIGHT = 1
 FIELD_WIDTH = 20
 FIELD_HEIGHT = 1
 
+"""Снежинка Коха. Параметры"""
 # Окно снежинки Коха
 KOCH_WIDTH = 100
 KOCH_HEIGHT = 320
@@ -30,4 +31,10 @@ KOCH_TITLE = 'Снежинка Коха'
 # Параметры кнопок окна снежинки Коха
 KOCH_BUTTON_WIDTH = 10
 KOCH_BUTTON_HEIGHT = 1
+
+"""L-Система. Параметры"""
+# Параметры окна L-системы
+L_CURVE_WIDTH = 400
+L_CURVE_HEIGHT = 400
+L_TITLE = 'L-Система'
 
