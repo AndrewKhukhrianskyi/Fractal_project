@@ -5,7 +5,7 @@
 def number_converter(arr):
     try:
         return list(map(int, arr))
-    except:
+    except (TypeError):
         return None
 
 

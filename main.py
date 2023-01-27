@@ -1,20 +1,15 @@
 from tkinter import *
 
 from files.config.ui_config import *
-from files.eng.koch_func import KochClass
 from files.koch_screen import KochScreen
 from files.l_curve_screen import LCurveScreen
 
 
 class MainScreen:
-    def __init__(self):
-        self.width = WIDTH
-        self.height = HEIGHT
-    
     def main_window(self):
         root = Tk()
         root.title(TITLE)
-        root.geometry(f"{self.width}x{self.height}")
+        root.geometry(f"{WIDTH}x{HEIGHT}")
         root.resizable(False,False)
         root.config(bg = COLOR)
 
@@ -34,10 +29,11 @@ class MainScreen:
         
         empty_label = Label(width = LABEL_WIDTH,
                             bg = COLOR)
-        
-        koch_button.pack(side = TOP)
-        empty_label.pack(side = TOP)
-        l_curve_button.pack(side = TOP)
+        widgets = [koch_button,
+                   empty_label,
+                   l_curve_button]
+        for widget in widgets:
+            widget.pack(side = TOP)
         
         root.mainloop()
         
