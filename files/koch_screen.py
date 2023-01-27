@@ -8,13 +8,17 @@ from files.eng.converter import number_converter
 from files.config.ui_config import *
 
 class KochScreen:
-    def __init__(self):
-        self.width = KOCH_WIDTH
-        self.height = KOCH_HEIGHT
-
+    '''
+        Класс KochScreen отвечает за отрисовку элементов,
+        необходимых для работы панели (кнопки, текстовые панели и тп.)
+        Структура выглядит следующим образом:
+            - UI функции (Функция окна, команды для кнопок и тп.)
+            - UI элементы (Создание кнопок и прочих элементов)
+            - Запаковка UI элементов (Размещение UI элементов)
+    '''
     def koch_window(self):
-        sub_root = Toplevel(width = self.width,
-                            height = self.height,
+        sub_root = Toplevel(width = KOCH_WIDTH,
+                            height = KOCH_HEIGHT,
                             bg = COLOR)
         sub_root.title(KOCH_TITLE)
         sub_root.resizable(False, False)
@@ -54,17 +58,16 @@ class KochScreen:
             for wdg in range(len(text_list)):
                 if len(text_list[wdg].get(0.0, END)) > 4:
                     mb.showerror('Ошибка', "Какой-то из параметров принял большое значение! Я не буду рисовать!")
-                    return 0
+                    return None
                 
                 if int(text_list[-1].get(0.0, END)) > 30:
                     mb.showerror('Ошибка', "Большой параметр цикла отрисовки. Измените его!")
-                    return 0
+                    return None
                 
                 arr.append(text_list[wdg].get(0.0, END))
             
             draw_init = KochClass(number_converter(arr))
             draw_init.draw()
-
         length_label = Label(sub_root,
                              width = LABEL_WIDTH,
                              height = LABEL_HEIGHT,
@@ -165,4 +168,3 @@ class KochScreen:
 
         for wdg in wdg_list:
             wdg.pack()
-        

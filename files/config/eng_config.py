@@ -1,4 +1,3 @@
-# Этот файл содержит все элементы, необходимые для UI
 # Turtle
 TURTLE_WIDTH = 1200
 TURTLE_HEIGHT = 600
